@@ -57,6 +57,15 @@ GitHub Actions 工作流位于 `.github/workflows/deploy-pages.yml`。将代码�
 
 在仓库设置中将 Pages 的构建来源设置为 GitHub Actions；如果继续使用 `algosoft.cc`，还需要在 Pages 设置中配置自定义域名和 DNS。
 
+## 网站统计
+
+网站使用内置的第一方统计模块记录匿名 `page_view` 和 `download` 事件，不使用
+Cookie 或持久化用户 ID。生产构建通过 `VITE_ANALYTICS_ENDPOINT` 指向统计服务，当前
+Pages 工作流使用 `https://stats.algosoft.cc/v1/events`。统计接口不可用时不会阻止页面
+导航或文件下载。
+
+网站隐私说明位于 `/privacy/` 和 `/en/privacy/`。
+
 ## 添加产品文档
 
 为新产品分别添加中英文 Markdown 文件：

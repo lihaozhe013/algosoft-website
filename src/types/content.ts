@@ -260,3 +260,24 @@ export interface PrivacyPageContent {
     copyright: string;
   };
 }
+
+export interface SitePrivacyPageContent {
+  locale: Locale;
+  htmlLang: string;
+  alternatePath: string;
+  alternateLabel: string;
+  hero: {
+    kicker: string;
+    title: string;
+    subtitle: string;
+    updated: string;
+  };
+  nav: {
+    home: string;
+  };
+  sections: readonly PrivacySection[];
+  footer: {
+    backHome: string;
+    copyright: string;
+  };
+}

@@ -2,11 +2,14 @@
 import { computed } from 'vue';
 
 import BrandLogo from '@components/BrandLogo.vue';
-import { getSiteRoutes } from '@composables/useSiteRoutes';
+import { getSiteRoutes, withBase } from '@composables/useSiteRoutes';
 import type { SiteContent } from '@/types/content';
 
 const props = defineProps<{ content: SiteContent }>();
 const routes = computed(() => getSiteRoutes(props.content.locale));
+const privacyPath = computed(() =>
+  withBase(props.content.locale === 'en' ? '/en/privacy/' : '/privacy/'),
+);
 </script>
 
 <template>
@@ -25,6 +28,11 @@ const routes = computed(() => getSiteRoutes(props.content.locale));
         <a href="https://algocode.cc" target="_blank" rel="noopener"
           >AlgoCode</a
         >
+        <a :href="privacyPath">
+          {{
+            props.content.locale === 'en' ? 'Website privacy' : '网站隐私说明'
+          }}
+        </a>
         <a href="mailto:5266917@qq.com">5266917@qq.com</a>
       </nav>
       <p class="footer-copy">

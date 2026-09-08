@@ -3,12 +3,15 @@ import 'element-plus/es/components/button/style/css';
 import 'element-plus/es/components/tag/style/css';
 
 import App from '@/App.vue';
+import { startAnalytics } from '@/analytics';
 import {
   getDocumentSlugFromPath,
   isDocsHomePath,
 } from '@composables/useSiteRoutes';
 import { getLocaleFromPath, i18n } from '@/i18n';
 import '@styles/main.css';
+
+startAnalytics();
 
 const locale = getLocaleFromPath(window.location.pathname);
 const isDocsPage = getDocumentSlugFromPath(window.location.pathname) !== null;

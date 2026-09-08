@@ -31,9 +31,11 @@ function directoryTrailingSlashRedirect(): Plugin {
       }
 
       const { pathname } = url;
-      if (pathname.endsWith('/') || path.posix.extname(pathname) !== '') return next();
+      if (pathname.endsWith('/') || path.posix.extname(pathname) !== '')
+        return next();
 
-      if (!existsSync(path.join(getBaseDir(), pathname, 'index.html'))) return next();
+      if (!existsSync(path.join(getBaseDir(), pathname, 'index.html')))
+        return next();
 
       res.statusCode = 301;
       res.setHeader('Location', `${pathname}/${url.search}`);
@@ -124,6 +126,12 @@ export default defineConfig({
         ),
         privacyEn: fileURLToPath(
           new URL('./en/algopdf/privacy/index.html', import.meta.url),
+        ),
+        privacySiteZh: fileURLToPath(
+          new URL('./privacy/index.html', import.meta.url),
+        ),
+        privacySiteEn: fileURLToPath(
+          new URL('./en/privacy/index.html', import.meta.url),
         ),
       },
     },
